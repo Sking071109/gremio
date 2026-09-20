@@ -1,0 +1,113 @@
+/* Estilos del tablon del gremio. Ya esta listo, no hay que tocarlo. */
+:root {
+    --fondo: #14110f;
+    --papel: #1f1b17;
+    --borde: #3a3128;
+    --tinta: #efe7d8;
+    --tenue: #9a8f7d;
+    --oro: #d9a441;
+    --sangre: #c2452d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--tinta);
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    line-height: 1.6;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+}
+
+.marca { font-size: 1.1rem; letter-spacing: 0.02em; }
+.barra-derecha { display: flex; align-items: center; gap: 1rem; color: var(--tenue); }
+
+.contenedor { max-width: 640px; margin: 2.5rem auto; padding: 0 1.25rem; }
+
+.tarjeta {
+    background: var(--papel);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+h1 { margin: 0 0 0.25rem; font-size: 1.6rem; font-weight: 600; }
+h2 { margin: 0 0 0.75rem; font-size: 1.2rem; font-weight: 600; }
+.titulo-lista { margin-bottom: 0.5rem; }
+
+label { display: block; margin-top: 0.9rem; font-size: 0.9rem; color: var(--tenue); }
+
+input {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    margin-top: 0.3rem;
+    background: #171310;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    color: var(--tinta);
+    font: inherit;
+    font-size: 0.95rem;
+}
+
+input:focus { outline: 2px solid var(--oro); outline-offset: 1px; }
+
+.fila { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.fila #inputTitulo { flex: 3 1 12rem; }
+.fila #inputRecompensa { flex: 1 1 6rem; }
+.fila button { flex: 0 0 auto; }
+
+.btn-principal {
+    margin-top: 1.2rem;
+    padding: 0.6rem 1.3rem;
+    background: var(--oro);
+    border: none;
+    border-radius: 4px;
+    color: #1a1510;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fila .btn-principal { margin-top: 0.3rem; }
+.btn-principal:hover { background: #e8b65a; }
+
+.btn-texto {
+    background: none;
+    border: none;
+    color: var(--tenue);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.lista { list-style: none; padding: 0; margin: 0; }
+
+.lista li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    background: var(--papel);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+}
+
+.lista .titulo { flex: 1; }
+.lista .hecho .titulo { text-decoration: line-through; color: var(--tenue); }
+.lista .oro { color: var(--oro); font-variant-numeric: tabular-nums; }
+
+.ayuda { color: var(--tenue); font-size: 0.9rem; margin: 0.3rem 0 0; }
+.error { color: var(--sangre); font-size: 0.9rem; min-height: 1.2rem; margin: 0.7rem 0 0; }
+.oculto { display: none; }

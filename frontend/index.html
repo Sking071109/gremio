@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gremio de Cazadores</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="barra">
+        <span class="marca">Gremio de Cazadores</span>
+        <div class="barra-derecha">
+            <span id="nombreCazador"></span>
+            <button id="btnSalir" class="btn-texto oculto">Cerrar sesion</button>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- PANTALLA 1: LOGIN -->
+        <section id="pantallaLogin" class="tarjeta">
+            <h1>Entrar al gremio</h1>
+            <p class="ayuda">Usa una cuenta de prueba o registra la tuya.</p>
+
+            <label for="inputEmail">Correo</label>
+            <input id="inputEmail" type="email" placeholder="kael@gremio.com">
+
+            <label for="inputPassword">Contrasena</label>
+            <input id="inputPassword" type="password" placeholder="cazador123">
+
+            <button id="btnEntrar" class="btn-principal">Entrar</button>
+            <p id="errorLogin" class="error"></p>
+        </section>
+
+        <!-- PANTALLA 2: TABLON DE ENCARGOS -->
+        <section id="pantallaApp" class="oculto">
+
+            <div class="tarjeta">
+                <h2>Publicar un encargo</h2>
+                <div class="fila">
+                    <input id="inputTitulo" type="text" placeholder="Cazar al lobo de las minas">
+                    <input id="inputRecompensa" type="number" placeholder="Oro" min="0">
+                    <button id="btnPublicar" class="btn-principal">Publicar</button>
+                </div>
+                <p id="errorEncargo" class="error"></p>
+            </div>
+
+            <h2 class="titulo-lista">Mis encargos</h2>
+            <p id="estadoLista" class="ayuda">Cargando...</p>
+            <ul id="listaEncargos" class="lista"></ul>
+
+        </section>
+
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

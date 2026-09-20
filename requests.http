@@ -1,0 +1,73 @@
+### Gremio de Cazadores - pruebas con REST Client
+### Cambia @url por la de Render cuando ya este desplegado
+
+@url = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJub21icmUiOiJLYWVsIiwiaWF0IjoxNzg5OTQ1OTkxLCJleHAiOjE3ODk5NTMxOTF9.xcYPBogjNKwODu7It_QHP8xDPrjEzQnB7QBfAygXcDA
+
+### 1) Salud del servidor
+GET {{url}}/salud
+
+### 2) Login correcto -> debe devolver 200 y un token
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "kael@gremio.com",
+  "password": "cazador123"
+}
+
+### 3) Login con contrasena mala -> debe devolver 401
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "kael@gremio.com",
+  "password": "noeslaclave"
+}
+
+### 4) EL ATAQUE: un solo apostrofe en el campo email
+### Debe responder 401, igual que cualquier login fallido.
+### Si responde 500 con un error de sintaxis SQL, hay un agujero:
+### significa que lo que tu escribes se esta mezclando con la consulta.
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "'",
+  "password": "loquesea"
+}
+
+### 5) Listar encargos SIN token -> debe devolver 401
+GET {{url}}/encargos
+
+### 6) Listar encargos CON token -> solo los del cazador logueado
+GET {{url}}/encargos
+Authorization: Bearer {{token}}
+
+### 7) Crear encargo valido -> 201
+POST {{url}}/encargos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "titulo": "Escoltar al mercader",
+  "recompensa": 300
+}
+
+### 8) Crear encargo invalido -> debe devolver 400
+POST {{url}}/encargos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "titulo": "x",
+  "recompensa": -500
+}
+
+### 9) Completar un encargo (cambia el 1 por un id tuyo)
+PATCH {{url}}/encargos/1/completar
+Authorization: Bearer {{token}}
+
+### 10) Eliminar un encargo
+DELETE {{url}}/encargos/1
+Authorization: Bearer {{token}}
