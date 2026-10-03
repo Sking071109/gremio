@@ -42,7 +42,7 @@ Ve marcando a medida que avanzas. Al final yo verifico cada punto contra tus URL
 
 **Que funcione (50)**
 
-- [ ] **10** — El backend está vivo: `GET /salud` responde desde la URL de Render
+- [x] **10** — El backend está vivo: `GET /salud` responde desde la URL de Render
 - [ ] **10** — La lista de encargos sale de Supabase con datos reales
 - [ ] **10** — El login funciona en producción y devuelve un token
 - [ ] **10** — El front en Vercel carga y deja entrar con una cuenta
